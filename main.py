@@ -15,6 +15,12 @@ def generate_password(length_of_password=DEFAULT_PASSWORD_LENGTH):
     print(accepted_characters)
     print(length_of_password)
 
+    password = ""
+    for i in range(length_of_password):
+        password += random.choice(accepted_characters)
+
+    print(password)
+
 
 if __name__ == "__main__":
     print("Generate Passwords :) \n")
