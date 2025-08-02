@@ -14,7 +14,7 @@ def generate_password(length_of_password=DEFAULT_PASSWORD_LENGTH):
         2. Conttains one lowercase, uppercase, digit and symbol
 
     Returns:
-        None: For now, it just prints the password as is.
+        String: Returns the generated password
     """
 
     accepted_characters = (
@@ -23,17 +23,27 @@ def generate_password(length_of_password=DEFAULT_PASSWORD_LENGTH):
     print("AcceptedChars: ", accepted_characters)
     print("LengthOfPass: ", length_of_password)
 
-    password = []
-    for i in range(length_of_password):
+    # atleast one uppercase, lowercase, digit, symbol
+    password = [
+        random.choice(UPPER_ASCII_CHARACTERS),
+        random.choice(LOWER_ASCII_CHARACTERS),
+        random.choice(DIGITS),
+        random.choice(SYMBOLS),
+    ]
+
+    for _ in range(length_of_password - 4):
         password += random.choice(accepted_characters)
 
-    # make it more complex by shuffling i guess
+    # make it more complex by shuffling
     random.shuffle(password)
-    password = "".join(password)
-    print(f"Generate Password: {password}")
+
+    return "".join(password)
 
 
 if __name__ == "__main__":
     print("Generate Passwords :)")
-    n = int(input("Enter the length of password: "))
-    generate_password(n)
+    n = int(input("Enter the length of password (min. 4): "))
+    if n < 4:
+        print("That will generate a weak password.")
+    else:
+        print(f"Generate Password: {generate_password(n)}")
