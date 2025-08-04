@@ -1,4 +1,6 @@
 import random
+import secrets
+import pyperclip
 
 MIN_PASSWORD_LENGTH = 4
 DEFAULT_PASSWORD_LENGTH = 8
@@ -26,19 +28,16 @@ def generate_password(length_of_password=DEFAULT_PASSWORD_LENGTH):
 
     # atleast one uppercase, lowercase, digit, symbol = MIN_PASSWORD_LENGTH
     password = [
-        random.choice(UPPER_ASCII_CHARACTERS),
-        random.choice(LOWER_ASCII_CHARACTERS),
-        random.choice(DIGITS),
-        random.choice(SYMBOLS),
+        secrets.choice(UPPER_ASCII_CHARACTERS),
+        secrets.choice(LOWER_ASCII_CHARACTERS),
+        secrets.choice(DIGITS),
+        secrets.choice(SYMBOLS),
     ]
 
     for _ in range(length_of_password - MIN_PASSWORD_LENGTH):
-        password += random.choice(accepted_characters)
+        password += secrets.choice(accepted_characters)
 
-    # make it more complex by shuffling
     random.shuffle(password)
-
-    # returns the super strong password :)
     return "".join(password)
 
 
@@ -53,4 +52,10 @@ if __name__ == "__main__":
         print(f"Generating password of minimum length: {MIN_PASSWORD_LENGTH}")
         n = MIN_PASSWORD_LENGTH
 
-    print(f"Generate Password: {generate_password(n)}")
+    generated_password = generate_password(n)
+    print(f"Generate Password: {generated_password}")
+
+    pyperclip.copy(generated_password)
+    print(
+        "Copied to Clipboard !!!\nPlease clear your clipboard manually for security purposes."
+    )
