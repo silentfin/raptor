@@ -1,13 +1,14 @@
 import random
 import secrets
 import pyperclip
+import string
 
 MIN_PASSWORD_LENGTH = 4
 DEFAULT_PASSWORD_LENGTH = 8
-LOWER_ASCII_CHARACTERS = "abcdefghijklmnopqrstuvwxyz"
-UPPER_ASCII_CHARACTERS = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
-DIGITS = "0123456789"
-SYMBOLS = "~!@#$%^&*()"
+LOWER_ASCII_CHARACTERS = string.ascii_lowercase
+UPPER_ASCII_CHARACTERS = string.ascii_uppercase
+DIGITS = string.digits
+SYMBOLS = string.punctuation
 
 
 def generate_password(length_of_password=DEFAULT_PASSWORD_LENGTH):
@@ -35,7 +36,7 @@ def generate_password(length_of_password=DEFAULT_PASSWORD_LENGTH):
     ]
 
     for _ in range(length_of_password - MIN_PASSWORD_LENGTH):
-        password += secrets.choice(accepted_characters)
+        password.append(secrets.choice(accepted_characters))
 
     random.shuffle(password)
     return "".join(password)
