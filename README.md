@@ -6,12 +6,11 @@ a not-so-simple password generator
 
 - [x] Start project
 - [x] Generate password
+- [x] Make the password auto-copy to clipboard
 - [ ] Add an option to generate a user-defined password pattern
-- [ ] Add an option to generate pin-codes
-- [ ] Add user-defined custom characters
-- [ ] Make the password auto-copy to clipboard
-- [ ] Store the generated password if user says so (.txt -> .json -> .something_secure)
+- [ ] Add an option to generate passphrases
+- [ ] Add tests (for learning purposes only)
+- [ ] Add option to exclude similar looking characters `I l 1 0 O`  etc.
 - [ ] Add password strength checker
-- [ ] Generate a qr-code of the password
-- [ ] Make it beautiful by adding a TUI
-- [ ] Release .exe, .msi, .deb, etc.
+- [ ] Make it beautiful
+- [ ] Release .exe
